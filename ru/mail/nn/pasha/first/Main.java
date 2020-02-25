@@ -1,8 +1,14 @@
 package ru.mail.nn.pasha.first;
 
-public class Main {
+import java.util.function.Consumer;
 
+/** main class */
+public class Main {
+    /** Enter point
+     * @param args string of initialization
+     */
     public static void main(String[] args) {
-	// write your code here
+        //Algorithms.testSort(5, Algorithms::bubbleSort);
+        Algorithms.testSort(0, Algorithms::selectSort);
     }
 }
