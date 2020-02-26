@@ -8,7 +8,15 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-        //Algorithms.testSort(5, Algorithms::bubbleSort);
-        Algorithms.testSort(0, Algorithms::selectSort);
+        MatrixCalculator mx1= new MatrixCalculator(2,2);
+        MatrixCalculator mx2= new MatrixCalculator(2,2);
+        MatrixCalculator mxResault;
+        mx1.fill();
+        mx2.fill();
+        mxResault= mx1.add(mx2);
+        System.out.println(mx1);
+        System.out.println(mx2);
+        System.out.println(mxResault);
+        System.out.println(mxResault.muxN(2));
     }
 }

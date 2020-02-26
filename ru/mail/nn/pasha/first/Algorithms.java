@@ -1,13 +1,13 @@
 /**
  *  @author Paul.nn.mail.ru
  *  First part of solutions
+ *
  */
 package ru.mail.nn.pasha.first;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 import java.util.function.Consumer;
-
 /** Some sort algorithms */
 public class Algorithms {
     /**
@@ -63,4 +63,77 @@ public class Algorithms {
             }
         }
     }
+    /* how call:
+    * Algorithms.testSort(5, Algorithms::bubbleSort);
+    * Algorithms.testSort(0, Algorithms::selectSort);
+     */
 }
+// Next task for OOP
+//(1)
+/** Phone task: make class with some field and methods*/
+class Phone{
+    private int number;
+    private float weight;
+    private String model;
+        /** main constructor receive all
+         * @param number
+         * @param model
+         * @param weight
+         */
+    public Phone(int number, float weight, String model) {
+        this.number = number;
+        this.weight = weight;
+        this.model = model;
+    }
+        /** constructor receive int number, String model
+         * @param number
+         * @param model */
+    public Phone(int number, String model) {
+        this.weight=0;
+        this.number = number;
+        this.model = model;
+    }
+        /** constructor nothing receive*/
+    public Phone() {
+        this(0,0,"noname");
+    }
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "number=" + number +
+                ", weight=" + weight +
+                ", model='" + model + '\'' +
+                '}';
+    }
+    /**
+     * receive call, show name
+     *
+     * @param name who call*/
+    public void receiveCall(String name){
+        System.out.println(name+" call.");
+    }
+    /**
+     * receive call, show name and phone
+     * @param name who call
+     * @param number number of callman*/
+    public void receiveCall(String name, int number){
+        System.out.println(name+" call, "+number);
+    }
+    /** show number
+     * @return number*/
+    public int getNumber() {
+        return number;
+    }
+    /** receive a lot of phone numbers
+     * @param numbers numbers of phone*/
+    public void sendMessage(int...numbers){
+        System.out.println("Numbers:");
+        for (int number:numbers) {
+            System.out.println(number);
+        }
+    }
+
+
+
+}
+
