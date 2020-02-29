@@ -1,21 +1,21 @@
 package ru.mail.nn.pasha.second;
+
 import java.util.Iterator;
 
-/** My linked List for int*/
-public class LinkedListInt implements Iterable<Integer>{
+public class LinkedListT<T> implements Iterable<T>{
     private Node head;
     private Node last;
     private int length;
     //constructors
-    LinkedListInt(){
+    public LinkedListT(){
         head=last=null;
         length=0;
     }
     // getters\setters
-    int getLength(){return length;}
+    public int getLength(){return length;}
     // methods
     /** add value to end */
-    int addLast(int value){
+    public T addLast(T value){
         if(head == null){// length==0
             head = last = new Node(value, null, null);
         }else if(head == last){// length==1
@@ -26,13 +26,14 @@ public class LinkedListInt implements Iterable<Integer>{
         return value;
     }
     /** add to begin */
-    int addHead(int value){
+    public T addHead(T value){
         head= new Node(value, null, head);
-        head.next.prev= head;
+        if(head.next != null) head.next.prev= head;
+        else last=head;
         return value;
     }
     /** add to index position */
-    int add(int value, int index){
+    public T add(T value, int index){
         if(index <= 0 || index>= length) new IndexOutOfBoundsException("add by index");
         if(index == 0){
             addHead(value);
@@ -47,12 +48,12 @@ public class LinkedListInt implements Iterable<Integer>{
         return value;
     }
     /** replace value by index*/
-    int replace(int value, int index){
+    public T replace(T value, int index){
         getNode(index).payload= value;
         return value;
     }
     /** remove element from list by index*/
-    int remove(int index){
+    public T remove(int index){
         Node forDel= getNode(index);
         if(forDel == head){// and last==head
             head= head.next;
@@ -69,14 +70,14 @@ public class LinkedListInt implements Iterable<Integer>{
         length--;
         return forDel.payload;
     }
-    /** get value*/
-    int get(int index){
+    /** get T value*/
+    public T get(int index){
         return getNode(index).payload;
     }
     /** reverse list*/
-    void reverse(){
+    public void reverse(){
         if(head == null || head == last) return;
-        LinkedListInt newlli= new LinkedListInt();
+        LinkedListT<T> newlli= new LinkedListT();
         Node prevHead= null;
         while(head != null){
             newlli.head= head;
@@ -89,17 +90,17 @@ public class LinkedListInt implements Iterable<Integer>{
     }
     /** for each*/
     @Override
-    public Iterator<Integer> iterator() {
-        Iterator<Integer> it = new Iterator<Integer>() {
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
             private Node cur = head;
             @Override
             public boolean hasNext() {
                 return cur != null;
             }
             @Override
-            public Integer next() {
-                int value= cur.payload;
-                cur=cur.next;
+            public T next() {
+                T value = cur.payload;
+                cur = cur.next;
                 return value;
             }
             @Override
@@ -107,10 +108,9 @@ public class LinkedListInt implements Iterable<Integer>{
                 throw new UnsupportedOperationException();
             }
         };
-        return it;
     }
     /** empty list? */
-    boolean isEmpty(){ return head == null;}
+    public boolean isEmpty(){ return head == null;}
     /** get object Node with certain index*/
     private Node getNode(int index){
         if(index<0 || index>=length) throw new IndexOutOfBoundsException("getNode");
@@ -135,22 +135,22 @@ public class LinkedListInt implements Iterable<Integer>{
     @Override
     public String toString(){
         if(head == null) return "[ ]";
-        String s="[ ";
+        StringBuilder s= new StringBuilder("[ ");
         Node current= head;
         while(current.next != null){
-            s+= current.toString() + ", ";
+            s.append(current.toString()).append(", ");
             current= current.next;
         }
-        s+=current.toString()+" ]";
-        return s;
+        s.append(current.toString()).append(" ]");
+        return s.toString();
     }
     //classes
     private class Node{
         Node prev;
         Node next;
-        int payload;
+        T payload;
         //
-        Node(int payload, Node prev, Node next){
+        Node(T payload, Node prev, Node next){
             this.payload= payload;
             this.prev= prev;
             this.next= next;
@@ -159,7 +159,24 @@ public class LinkedListInt implements Iterable<Integer>{
         //
         @Override
         public String toString(){
-            return "" + payload;
+            return "" + payload.toString();
         }
     }
 }
+/*  next class for testing LinkedListT<T>, place it in Main or make it public
+class Payload{
+    String name;
+    int age;
+    // constructors
+    public Payload(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    //methods
+    @Override
+    public String toString() {
+        return '{' + name + ", " +age + '}';
+    }
+}
+ */
+
