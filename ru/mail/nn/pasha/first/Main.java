@@ -1,5 +1,6 @@
 package ru.mail.nn.pasha.first;
 import ru.mail.nn.pasha.second.LinkedListT;
+import ru.mail.nn.pasha.second.StackT;
 
 import java.util.function.Consumer;
 
@@ -9,7 +10,13 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-
+        StackT<Payload> nt= new StackT<>(3);
+        nt.push(new Payload("Paul", 15));
+        nt.push(new Payload("Gaul", 25));
+        nt.push(new Payload("Faul", 35));
+        System.out.println(nt.pop());
+        System.out.println(nt.pop());
+        System.out.println(nt.pop());
     }
 }
 // next class for testing LinkedListT<T>
