@@ -34,7 +34,7 @@ public class LinkedListT<T> implements Iterable<T>{
     }
     /** add to index position */
     public T add(T value, int index){
-        if(index <= 0 || index>= length) new IndexOutOfBoundsException("add by index");
+        if(index <= 0 || index>= length) throw new IndexOutOfBoundsException("add by index");
         if(index == 0){
             addHead(value);
         }else if(index==length-1){
