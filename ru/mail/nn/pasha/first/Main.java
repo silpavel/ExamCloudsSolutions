@@ -1,6 +1,7 @@
 package ru.mail.nn.pasha.first;
 import ru.mail.nn.pasha.collections.ArrayListT;
 import ru.mail.nn.pasha.collections.QueueArray;
+import ru.mail.nn.pasha.collections.QueueTwoDirect;
 
 import java.util.Date;
 import java.util.Random;
@@ -11,22 +12,6 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-        QueueArray<Payload> payloads= new QueueArray<>(2);
-        System.out.println(payloads.add(new Payload("Paul", 9)));
-        System.out.println(payloads.add(new Payload("Faul", 19)));
-        System.out.println(payloads.add(new Payload("Gaul", 29)));
-        System.out.println("poll= "+payloads.poll());
-        System.out.println("poll= "+payloads.poll());
-        System.out.println("poll= "+payloads.poll());
-        System.out.println(payloads.add(new Payload("Gaul", 29)));
-        System.out.println(payloads.add(new Payload("Maul", 129)));
-        System.out.println("poll= "+payloads.poll());
-        System.out.println(payloads.add(new Payload("Gaul", 29)));
-        System.out.println(payloads.add(new Payload("Maul", 129)));
-        System.out.println(payloads);
-
-
-
 
     }
 }
