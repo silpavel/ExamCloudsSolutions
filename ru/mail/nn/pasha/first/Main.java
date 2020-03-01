@@ -1,9 +1,9 @@
 package ru.mail.nn.pasha.first;
-import ru.mail.nn.pasha.second.ArrayListT;
-import ru.mail.nn.pasha.second.LinkedListT;
-import ru.mail.nn.pasha.second.StackT;
+import ru.mail.nn.pasha.collections.ArrayListT;
+import ru.mail.nn.pasha.collections.QueueArray;
 
-import java.util.function.Consumer;
+import java.util.Date;
+import java.util.Random;
 
 /** main class */
 public class Main {
@@ -11,18 +11,26 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-        ArrayListT<Payload> pl= new ArrayListT<>(4);
-        pl.add(new Payload("R1",1));
-        pl.add(new Payload("R2",2));
-        pl.add(new Payload("R3",3));
-        pl.add(new Payload("R4",4));
-        pl.add(new Payload("R5",5));
-        for (Payload pay: pl) {
-            System.out.println(pay);
-        }
+        QueueArray<Payload> payloads= new QueueArray<>(2);
+        System.out.println(payloads.add(new Payload("Paul", 9)));
+        System.out.println(payloads.add(new Payload("Faul", 19)));
+        System.out.println(payloads.add(new Payload("Gaul", 29)));
+        System.out.println("poll= "+payloads.poll());
+        System.out.println("poll= "+payloads.poll());
+        System.out.println("poll= "+payloads.poll());
+        System.out.println(payloads.add(new Payload("Gaul", 29)));
+        System.out.println(payloads.add(new Payload("Maul", 129)));
+        System.out.println("poll= "+payloads.poll());
+        System.out.println(payloads.add(new Payload("Gaul", 29)));
+        System.out.println(payloads.add(new Payload("Maul", 129)));
+        System.out.println(payloads);
+
+
+
+
     }
 }
-// next class for testing LinkedListT<T>
+// next class for testing <T>
 class Payload{
     String name;
     int age;

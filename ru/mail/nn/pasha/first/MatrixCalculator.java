@@ -20,7 +20,7 @@ public class MatrixCalculator {
         matrix= new double[row][column];
     }
     /** Addition this matrix and matrix as parameter
-     * @param matrixCalc second matrix type MatrixCalculator
+     * @param matrixCalc collections matrix type MatrixCalculator
      * @return new object MatrixCalculator or null
      * if matrixCalc is null or both matrix have different sizes*/
     public MatrixCalculator add(MatrixCalculator matrixCalc){

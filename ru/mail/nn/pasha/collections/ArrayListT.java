@@ -1,5 +1,4 @@
-package ru.mail.nn.pasha.second;
-
+package ru.mail.nn.pasha.collections;
 import java.util.Arrays;
 import java.util.Iterator;
 
