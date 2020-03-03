@@ -72,11 +72,6 @@ public class QueueArray<T> implements Iterable<T> {
         //System.out.println("array.length= "+array.length+", "+"head= "+head+", "+"last= "+last);
     }
 }
-class EmptyQueueException extends RuntimeException{
-    public EmptyQueueException(String message) {
-        super(message);
-    }
-}
 /* for testing
         QueueArray<Payload> payloads= new QueueArray<>(2);
         System.out.println(payloads.add(new Payload("Paul", 9)));

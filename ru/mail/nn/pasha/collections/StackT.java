@@ -26,13 +26,4 @@ public class StackT<T>{
     public boolean isEmpty(){return pointer == -1;}
     public boolean isFull(){return pointer == stack.length-1;}
 }
-class FullStackTException extends RuntimeException{
-    public FullStackTException(String message) {
-        super(message);
-    }
-}
-class EmptyStackTException extends RuntimeException{
-    public EmptyStackTException(String message) {
-        super(message);
-    }
-}
+
