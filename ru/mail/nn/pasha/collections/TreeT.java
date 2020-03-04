@@ -9,6 +9,7 @@ public class TreeT<T extends Comparable<T>> implements Iterable<T>{
         else root.add(value);
         return value;
     }
+
     @Override
     public String toString(){
         return (root == null) ? "[ ]" : '[' + root.toString() + ']';
@@ -18,12 +19,11 @@ public class TreeT<T extends Comparable<T>> implements Iterable<T>{
         return new Iterator(){
             @Override
             public boolean hasNext(){
-
-                return false;
+                return (root != null) && root.iterator().hasNext();
             }
             @Override
             public T next(){
-                return null;
+                return root.iterator().next();
             }
         };
     }
@@ -63,15 +63,37 @@ public class TreeT<T extends Comparable<T>> implements Iterable<T>{
         }
         public Iterator<T> iterator(){
             return new Iterator(){
-                Iterator<T> it;
+                Iterator<T> li= (left != null) ? left.iterator(): null;
+                Iterator<T> ri= (right != null) ? right.iterator(): null;
                 char direct='L';// _L_eft, _P_ayload, _R_ight
                 @Override
                 public boolean hasNext(){
+                    if(direct == 'L'){// left
+                        if( li != null && li.hasNext())
+                            return true;
+                        else
+                            direct= 'P';
+                    }
+                    if(direct == 'P') {// payload
+                        return true;
+                    }
+                    if(direct == 'R'){// right
+                        if(ri != null && ri.hasNext())
+                            return true;
+                    }
+                    //ri is null or ri.hasNext() is false
                     return false;
                 }
                 @Override
                 public T next(){
-                    return null;
+                    if(direct == 'L'){
+                        return li.next();
+                    }else if(direct == 'P'){
+                        direct= 'R';
+                        return payload;
+                    }else{// id direct=='R'
+                        return ri.next();
+                    }
                 }
             };
         }

@@ -13,12 +13,16 @@ public class Main {
         TreeT<Payload> payloads= new TreeT<Payload>();
         Random rand= new Random(new Date().getTime());
         int maxInter=10;
+
         for(int i=0; i<maxInter; i++){
             payloads.add(
                     new Payload(""+rand.nextInt(10),rand.nextInt(10))
             );
         }
+
+
         System.out.println(payloads);
+
 
     }
 
