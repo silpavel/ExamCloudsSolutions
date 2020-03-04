@@ -1,8 +1,5 @@
 package ru.mail.nn.pasha.first;
-import ru.mail.nn.pasha.collections.ArrayListT;
-import ru.mail.nn.pasha.collections.PriorityQueueT;
-import ru.mail.nn.pasha.collections.QueueArray;
-import ru.mail.nn.pasha.collections.QueueTwoDirect;
+import ru.mail.nn.pasha.collections.*;
 
 import java.util.Date;
 import java.util.Random;
@@ -13,40 +10,44 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-
-        PriorityQueueT<Payload> payloads= new PriorityQueueT<>(5);
-
-        payloads.add(new Payload("Pa", 11), 1);
-        payloads.add(new Payload("Pa", 12), 1);
-        payloads.add(new Payload("Pa", 61), 6);
-        payloads.add(new Payload("Pa", 62), 6);
-        payloads.add(new Payload("Pa", 63), 6);
-
-        //payloads.poll(4);
-        System.out.println(payloads);
-        for(Payload payload: payloads){
-            System.out.println(payload);
+        TreeT<Payload> payloads= new TreeT<Payload>();
+        Random rand= new Random(new Date().getTime());
+        int maxInter=10;
+        for(int i=0; i<maxInter; i++){
+            payloads.add(
+                    new Payload(""+rand.nextInt(10),rand.nextInt(10))
+            );
         }
-
-
-
-
+        System.out.println(payloads);
 
     }
 
 }
 // next class for testing <T>
-class Payload{
-    String name;
-    int age;
+class Payload implements Comparable<Payload>{
+    private String name;
+    private int age;
     // constructors
     public Payload(String name, int age) {
         this.name = name;
         this.age = age;
     }
+    // get/set
+    public String getName() {
+        return name;
+    }
+    public int getAge() {
+        return age;
+    }
     //methods
     @Override
     public String toString() {
         return '{' + name + ", " +age + '}';
+    }
+    @Override
+    public int compareTo(Payload pl){
+        int resault= name.compareTo(pl.name);
+        if(resault == 0) resault= age-pl.age;
+        return resault;
     }
 }
