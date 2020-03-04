@@ -10,9 +10,9 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-       PrimeGenerator primes= new PrimeGenerator(100);
-        System.out.println(primes.primes);
-
+       new LuckyTicket().showByThread();
+        System.out.println("=============");
+       new LuckyTicket().show();
 
     }
 
