@@ -1,6 +1,9 @@
 package ru.mail.nn.pasha.collections;
+
+import java.util.Iterator;
+
 //priority is int number, it have uniq value
-public class PriorityQueueT<T>{
+public class PriorityQueueT<T> implements Iterable<T>{
     private ArrayListT<Priority<T>> queues;
     private int capacityOfInnerQueue;
     // --- constructors
@@ -139,6 +142,37 @@ public class PriorityQueueT<T>{
         resault.append("]");
         return resault.toString();
     }
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            int index= 0;
+            Iterator<T> it=
+                (queues.get(index) != null)
+                ? queues.get(index).iterator()
+                : null;
+            @Override
+            public boolean hasNext() {
+                if(queues.get(index) != null && it.hasNext())
+                    return true;
+                else{
+                    for (int i = index+1; i <queues.length() ; i++) {
+                        if(queues.get(i) != null &&
+                                queues.get(i).iterator().hasNext()){
+                            index= i;
+                            it= queues.get(i).iterator();
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            @Override
+            public T next() {
+                return it.next();
+            }
+        };
+    }
+
     // --- other
     private class Priority<T> extends QueueArray<T>{
         int priority;

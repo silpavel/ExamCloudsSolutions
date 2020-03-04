@@ -48,7 +48,7 @@ public class QueueArray<T> implements Iterable<T> {
             }
             @Override
             public T next() {
-                return array[cur];
+                return array[cur++];
             }
         };
     }
