@@ -1,5 +1,6 @@
 package ru.mail.nn.pasha.first;
 import ru.mail.nn.pasha.collections.*;
+import ru.mail.nn.pasha.second.StringTasks;
 
 import java.util.Date;
 import java.util.Random;
@@ -10,12 +11,8 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-       new LuckyTicket().showByThread();
-        System.out.println("=============");
-       new LuckyTicket().show();
-
+        new StringTasks().sol_13();
     }
-
 }
 // next class for testing <T>
 class Payload implements Comparable<Payload>{
@@ -43,5 +40,11 @@ class Payload implements Comparable<Payload>{
         int resault= name.compareTo(pl.name);
         if(resault == 0) resault= age-pl.age;
         return resault;
+    }
+}
+class A{
+    static void fA(){}
+    class B{
+
     }
 }
