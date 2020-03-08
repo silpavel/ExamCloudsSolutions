@@ -1,6 +1,5 @@
 package ru.mail.nn.pasha.first;
-import ru.mail.nn.pasha.collections.*;
-import ru.mail.nn.pasha.second.StringTasks;
+import ru.mail.nn.pasha.collectiontasks.*;
 
 import java.util.Date;
 import java.util.Random;
@@ -11,7 +10,7 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-        new StringTasks().sol_13();
+        new Tasks().task11();
     }
 }
 // next class for testing <T>
