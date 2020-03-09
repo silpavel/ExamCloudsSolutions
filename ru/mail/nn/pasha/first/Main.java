@@ -1,6 +1,7 @@
 package ru.mail.nn.pasha.first;
-import ru.mail.nn.pasha.collectiontasks.*;
+import ru.mail.nn.pasha.iostreamtasks.*;
 
+import java.io.*;
 import java.util.Date;
 import java.util.Random;
 
@@ -10,7 +11,12 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-        new Tasks().task11();
+        First first= new First();
+        System.out.println(first.writeDouble());
+        System.out.println(first.readDouble());
+
+
+
     }
 }
 // next class for testing <T>
@@ -41,9 +47,4 @@ class Payload implements Comparable<Payload>{
         return resault;
     }
 }
-class A{
-    static void fA(){}
-    class B{
 
-    }
-}
