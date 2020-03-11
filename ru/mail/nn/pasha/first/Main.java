@@ -11,9 +11,8 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-        First first= new First();
-        System.out.println(first.writeDouble());
-        System.out.println(first.readDouble());
+        new Second().test2();
+
 
 
 
