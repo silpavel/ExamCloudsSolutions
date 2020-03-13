@@ -11,7 +11,7 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-        new Second().test2();
+
 
 
 
