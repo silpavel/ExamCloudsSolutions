@@ -11,11 +11,8 @@ public class Main {
      * @param args string of initialization
      */
     public static void main(String[] args) {
-
-
-
-
-
+        File file= new File("data/red.txt");
+        new SymbolStream().saveObj();
     }
 }
 // next class for testing <T>
